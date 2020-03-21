@@ -22,6 +22,10 @@ sed -i -e "s/%HOSTNAME%/`hostname`/g" -e "s/%FILE_ROTATION_TIME%/${FILE_ROTATION
 
 $SQLSTREAM_HOME/bin/sqllineClient --run=${EXPERIMENT_NAME:=hiveext}/setup.sql
 
+# include the standard monitor application
+
+. add_monitor.sh
+
 
 
 
