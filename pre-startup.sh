@@ -18,7 +18,7 @@ mkdir -p $SQLSTREAM_HOME/classes/net/sf/farrago/dynamic/
 echo ... installing the SQLstream schema 
 # update setup.sql to replace placeholders with actual values
 echo ... running on host=`hostname`
-sed -i -e "s/%HOSTNAME%/`hostname`/g" -e "s/%FILE_ROTATION_TIME%/${FILE_ROTATION_TIME:=1m}/" setup.sql
+sed -i -e "s/%HOSTNAME%/`hostname`/g" -e "s/%FILE_ROTATION_TIME%/${FILE_ROTATION_TIME:=1m}/" ${EXPERIMENT_NAME}/setup.sql
 
 $SQLSTREAM_HOME/bin/sqllineClient --run=${EXPERIMENT_NAME:=hiveext}/setup.sql
 
