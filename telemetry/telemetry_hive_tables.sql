@@ -27,7 +27,7 @@ DROP TABLE telemetry_stream_operator_info;
 
 -- now create the telemetry TABLES
 
-create or replace external table telemetry_server_info
+create external table telemetry_server_info
 (hostname varchar(128)
 ,measured_at timestamp
 ,is_running boolean
@@ -35,17 +35,17 @@ create or replace external table telemetry_server_info
 ,license_kind varchar(32)
 ,license_version varchar(32)
 ,is_throttled boolean
-,num_sessions integer
-,num_statements integer
+,num_sessions int
+,num_statements int
 ,started_at timestamp
 ,throttled_at timestamp
 ,throttle_level double
-,num_exec_threads integer
-,num_stream_graphs_open integer
-,num_stream_graphs_closed integer
-,num_stream_operators integer
-,num_stream_graphs_open_ever integer
-,num_stream_graphs_closed_ever integer
+,num_exec_threads int
+,num_stream_graphs_open int
+,num_stream_graphs_closed int
+,num_stream_operators int
+,num_stream_graphs_open_ever int
+,num_stream_graphs_closed_ever int
 ,net_memory_bytes bigint
 ,max_memory_bytes bigint
 ,usage_at timestamp
@@ -63,20 +63,20 @@ TBLPROPERTIES
 
 
 
-create or replace external table telemetry_stream_graph_info
+create external table telemetry_stream_graph_info
 (hostname varchar(128)
 ,measured_at timestamp
-,graph_id integer
-,statement_id integer
-,session_id integer
+,graph_id int
+,statement_id int
+,session_id int
 ,source_sql varchar(2048)
 ,sched_state char(1)
 ,close_mode char(6)
 ,is_global_nexus boolean
 ,is_auto_close boolean
-,num_nodes integer
-,num_live_nodes integer
-,num_data_buffers integer
+,num_nodes int
+,num_live_nodes int
+,num_data_buffers int
 ,total_execution_time double
 ,total_opening_time double
 ,total_closing_time double
@@ -101,21 +101,21 @@ TBLPROPERTIES
 ( "orc.compress" = "SNAPPY"
 );
 
-create or replace external table telemetry_stream_operator_info
+create external table telemetry_stream_operator_info
 (hostname varchar(128)
 ,measured_at timestamp
 ,node_id varchar(8)
-,graph_id integer
+,graph_id int
 ,source_sql varchar(1024)
 ,query_plan varchar(1024)
 ,name_in_query_plan varchar(64)
-,num_inputs integer
+,num_inputs int
 ,input_nodes varchar(64)
-,num_outputs integer
+,num_outputs int
 ,output_nodes varchar(64)
 ,sched_state char(2)
 ,last_exec_result char(3)
-,num_busy_neighbors integer
+,num_busy_neighbors int
 ,input_rowtime_clock timestamp
 ,output_rowtime_clock timestamp
 ,execution_count bigint
