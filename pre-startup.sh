@@ -15,14 +15,13 @@ done
 
 mkdir -p $SQLSTREAM_HOME/classes/net/sf/farrago/dynamic/
 
-echo ... installing the application schema into SQLstream 
+echo ... preparing the application schema  
 # update setup.sql to replace placeholders with actual values
 echo ... running on host=`hostname`
 cat ${EXPERIMENT_NAME}/setup.sql | sed -e "s/%HOSTNAME%/`hostname`/g" -e "s/%FILE_ROTATION_TIME%/${FILE_ROTATION_TIME:=1m}/" >/tmp/setup.sql
 
-$SQLSTREAM_HOME/bin/sqllineClient --run=/tmp/setup.sql
 
-echo ... installing the telemetry and trace schemas
+echo ... preparing the telemetry and trace schemas
 # make the needed subs
 
 cat > /tmp/trace.sed <<!END
@@ -31,15 +30,20 @@ s/%FILE_ROTATION_TIME%/1h/g
 s/%TELEMETRY_PERIOD_SECS%/30/g
 !END
 
+rm /tmp/telemetry_setup.sql 2>/dev/null
+
 for f in trace/trace_hive_sinks.sql trace/trace_pumps.sql \
          telemetry/telemetry_hive_sinks.sql telemetry/telemetry_pumps.sql
 do
     b=$(basename $f)
     echo $b
-    cat $f | sed -f /tmp/trace.sed > /tmp/$b
-    $SQLSTREAM_HOME/bin/sqllineClient --run=/tmp/$b
+    cat $f | sed -f /tmp/trace.sed > /tmp/setup.sql
     # rm /tmp/$b
 done
+
+echo ... installing the application, trace and telemetry schemas
+
+$SQLSTREAM_HOME/bin/sqllineClient --color=auto --run=/tmp/setup.sql
 
 
 
