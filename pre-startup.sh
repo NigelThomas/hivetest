@@ -25,7 +25,7 @@ $SQLSTREAM_HOME/bin/sqllineClient --run=/tmp/setup.sql
 echo ... installing the telemetry and trace schemas
 # make the needed subs
 
-cat /tmp/trace.sed <<!END
+cat > /tmp/trace.sed <<!END
 s/%HOSTNAME%/$(hostname)/g
 s/%FILE_ROTATION_TIME%/1h/g
 !END
