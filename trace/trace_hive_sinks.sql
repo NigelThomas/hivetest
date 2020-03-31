@@ -40,7 +40,7 @@ OPTIONS (
     "FILENAME_DATE_FORMAT" 'yyyy-MM-dd-HH.mm.ss',
     "FILE_ROTATION_TIME" '%FILE_ROTATION_TIME%',   
     "FORMATTER_INCLUDE_ROWTIME" 'false',
-    "FILE_ROTATION_RESPECT_ROWTIME" 'true'
+    "FILE_ROTATION_RESPECT_ROWTIME" 'true',
 
     -- these are the table-specific options
 
@@ -61,6 +61,6 @@ OPTIONS (
     "AUTH_METHOD" 'kerberos',
     "AUTH_USERNAME" 'svc_sqlstream_guavus@GVS.GGN',
     "AUTH_KEYTAB" '/home/sqlstream/svc_sqlstream_guavus.keytab',
-    "AUTH_METASTORE_PRINCIPAL" 'hive/_HOST@GVS.GGN',
+    "AUTH_METASTORE_PRINCIPAL" 'hive/_HOST@GVS.GGN'
     );
 
