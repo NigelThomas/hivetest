@@ -4,7 +4,7 @@
 --  %FILE_ROTATION_TIME% -- wants to be low for latency, high for compression
 --  %HOSTNAME%
 
-CREATE OR REPLACE SCHEMA '"SQLstream_Telemetry"';
+CREATE OR REPLACE SCHEMA "SQLstream_Telemetry";
 SET SCHEMA '"SQLstream_Telemetry"';
 
 create or replace FOREIGN STREAM TELEMETRY_SERVER_SINK
