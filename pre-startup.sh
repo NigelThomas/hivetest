@@ -30,14 +30,14 @@ s/%FILE_ROTATION_TIME%/1h/g
 s/%TELEMETRY_PERIOD_SECS%/30/g
 !END
 
-rm /tmp/telemetry_setup.sql 2>/dev/null
+# append the monitoring to the setup script
 
 for f in trace/trace_hive_sinks.sql trace/trace_pumps.sql \
          telemetry/telemetry_hive_sinks.sql telemetry/telemetry_pumps.sql
 do
     b=$(basename $f)
-    echo $b
-    cat $f | sed -f /tmp/trace.sed > /tmp/setup.sql
+    echo ... ... $b
+    cat $f | sed -f /tmp/trace.sed >> /tmp/setup.sql
     # rm /tmp/$b
 done
 
