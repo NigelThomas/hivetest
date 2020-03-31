@@ -4,6 +4,9 @@
 --  %FILE_ROTATION_TIME% -- wants to be low for latency, high for compression
 --  %HOSTNAME%
 
+CREATE OR REPLACE SCHEMA "SQLstream_Trace";
+SET SCHEMA '"SQLstream_Trace"';
+
 CREATE FOREIGN STREAM ALL_TRACE_SINK
 ( "HOSTNAME" VARCHAR(128)
 , "ERROR_TIME" TIMESTAMP
