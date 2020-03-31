@@ -15,16 +15,32 @@ done
 
 mkdir -p $SQLSTREAM_HOME/classes/net/sf/farrago/dynamic/
 
-echo ... installing the SQLstream schema 
+echo ... installing the application schema into SQLstream 
 # update setup.sql to replace placeholders with actual values
 echo ... running on host=`hostname`
-sed -i -e "s/%HOSTNAME%/`hostname`/g" -e "s/%FILE_ROTATION_TIME%/${FILE_ROTATION_TIME:=1m}/" ${EXPERIMENT_NAME}/setup.sql
+cat ${EXPERIMENT_NAME}/setup.sql | sed -e "s/%HOSTNAME%/`hostname`/g" -e "s/%FILE_ROTATION_TIME%/${FILE_ROTATION_TIME:=1m}/" >/tmp/setup.sql
 
-$SQLSTREAM_HOME/bin/sqllineClient --run=${EXPERIMENT_NAME:=hiveext}/setup.sql
+$SQLSTREAM_HOME/bin/sqllineClient --run=/tmp/setup.sql
 
-# include the standard monitor application
+echo ... installing the telemetry and trace schemas
+# make the needed subs
 
-. add_monitor.sh
+cat /tmp/trace.sed <<!END
+s/%HOSTNAME%/$(hostname)/g
+s/%FILE_ROTATION_TIME%/1h/g
+!END
+
+for f in trace/trace_hive_sinks.sql trace/trace_pumps.sql \
+         telemetry/telemetry_hive_sinks.sql telemetry/telemetry_pumps.sql
+do
+    b=$(basename $f)
+    echo $b
+    cat $f | sed -f /tmp/trace.sed > /tmp/$b
+    $SQLSTREAM_HOME/bin/sqllineClient --run=/tmp/$b
+    # rm /tmp/$b
+done
+
+
 
 
 
