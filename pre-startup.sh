@@ -28,6 +28,7 @@ echo ... installing the telemetry and trace schemas
 cat > /tmp/trace.sed <<!END
 s/%HOSTNAME%/$(hostname)/g
 s/%FILE_ROTATION_TIME%/1h/g
+s/%TELEMETRY_PERIOD_SECS%/30/g
 !END
 
 for f in trace/trace_hive_sinks.sql trace/trace_pumps.sql \
