@@ -185,7 +185,7 @@ OPTIONS (
 
     "HDFS_OUTPUT_DIR" '/data/svc_sqlstream_guavus/telemetry/streamop', 
 
-    "HIVE_SCHEMA_NAME" 'salstream_telemetry',
+    "HIVE_SCHEMA_NAME" 'sqlstream_telemetry',
     "HIVE_TABLE_NAME" 'telemetry_stream_operator_info',
 
     -- these are HDFS / Hive server options
