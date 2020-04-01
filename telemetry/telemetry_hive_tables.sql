@@ -27,7 +27,7 @@ DROP TABLE telemetry_stream_operator_info;
 
 -- now create the telemetry TABLES
 
-create external table telemetry_server_info
+create table telemetry_server_info
 (hostname varchar(128)
 ,measured_at timestamp
 ,is_running boolean
@@ -63,7 +63,7 @@ TBLPROPERTIES
 
 
 
-create external table telemetry_stream_graph_info
+create table telemetry_stream_graph_info
 (hostname varchar(128)
 ,measured_at timestamp
 ,graph_id int
@@ -101,7 +101,7 @@ TBLPROPERTIES
 ( "orc.compress" = "SNAPPY"
 );
 
-create external table telemetry_stream_operator_info
+create table telemetry_stream_operator_info
 (hostname varchar(128)
 ,measured_at timestamp
 ,node_id varchar(8)

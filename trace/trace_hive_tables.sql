@@ -7,10 +7,15 @@
 CREATE SCHEMA sqlstream_trace;
 !set force off
 
-
 USE sqlstream_trace;
 
-create external table all_trace
+!set force on
+ALTER TABLE all_trace SET TBLPROPERTIES('EXTERNAL'='False');
+DROP TABLE all_trace;
+!set force off
+
+
+create table all_trace
 ( hostname varchar(128)
 , error_time timestamp
 , error_level varchar(10)
