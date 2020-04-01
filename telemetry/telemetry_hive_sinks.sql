@@ -100,6 +100,7 @@ create or replace FOREIGN STREAM TELEMETRY_STREAM_GRAPH_SINK
 ,"when_finished" timestamp
 ,"when_closed" timestamp
 )
+SERVER HIVE_SERVER
 OPTIONS (
     "FORMATTER" 'CSV',
     "orc.version" 'V_0_11',
@@ -166,6 +167,7 @@ CREATE OR REPLACE FOREIGN STREAM TELEMETRY_STREAM_OPERATOR_SINK
 ,"net_memory_bytes" bigint
 ,"max_memory_bytes" bigint
 )
+SERVER HIVE_SERVER
 OPTIONS (
     "FORMATTER" 'ORC',
     "orc.version" 'V_0_11',
