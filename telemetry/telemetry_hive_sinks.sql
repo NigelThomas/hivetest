@@ -116,7 +116,7 @@ OPTIONS (
     "FILENAME_PREFIX" 'streamgraph-out-%HOSTNAME%',
     "ORIGINAL_FILENAME" 'pending-streamgraph.orc',
 
-    "HDFS_OUTPUT_DIR" '/data/svc_sqlstream_guavus/telemetry/streamop', 
+    "HDFS_OUTPUT_DIR" '/data/svc_sqlstream_guavus/telemetry/streamgraph', 
 
     "HIVE_SCHEMA_NAME" 'sqlstream_telemetry',
     "HIVE_TABLE_NAME" 'telemetry_stream_graph_info',

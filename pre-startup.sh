@@ -26,7 +26,7 @@ echo ... preparing the telemetry and trace schemas
 
 cat > /tmp/trace.sed <<!END
 s/%HOSTNAME%/$(hostname)/g
-s/%FILE_ROTATION_TIME%/1h/g
+s/%FILE_ROTATION_TIME%/15m/g
 s/%TELEMETRY_PERIOD_SECS%/30/g
 !END
 
