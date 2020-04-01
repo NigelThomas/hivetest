@@ -8,29 +8,29 @@ CREATE OR REPLACE SCHEMA "SQLstream_Trace";
 SET SCHEMA '"SQLstream_Trace"';
 
 CREATE FOREIGN STREAM ALL_TRACE_SINK
-( "HOSTNAME" VARCHAR(128)
-, "ERROR_TIME" TIMESTAMP
-, "ERROR_LEVEL" VARCHAR(10)
-, "IS_ERROR" BOOLEAN
-, "ERROR_CLASS" INTEGER
-, "ERROR_NAME" VARCHAR(32)
-, "SQL_STATE" VARCHAR(5)
-, "MESSAGE" VARCHAR(4096)
-, "THREAD_ID" INTEGER
-, "SESSION_ID" INTEGER
-, "STATEMENT_ID" INTEGER
-, "GRAPH_ID" INTEGER
-, "NODE_ID" INTEGER
-, "XO_NAME" VARCHAR(128)
-, "ERROR_REPORTER" VARCHAR(256)
-, "ERROR_SQL" VARCHAR(256)
-, "ERROR_BACKTRACE" VARCHAR(4096)
-, "DATA_ROWTIME" TIMESTAMP
---, "DATA_ROW" VARBINARY(32768)         -- VARBINARY not supported by Hive
-, "SOURCE_POSITION_KEY" VARCHAR(4096)
-, "PUMP_DB" VARCHAR(128)
-, "PUMP_SCHEMA" VARCHAR(128)
-, "PUMP_NAME" VARCHAR(128)
+( "hostname" varchar(128)
+, "error_time" timestamp
+, "error_level" varchar(10)
+, "is_error" boolean
+, "error_class" integer
+, "error_name" varchar(32)
+, "sql_state" varchar(5)
+, "message" varchar(4096)
+, "thread_id" integer
+, "session_id" integer
+, "statement_id" integer
+, "graph_id" integer
+, "node_id" integer
+, "xo_name" varchar(128)
+, "error_reporter" varchar(256)
+, "error_sql" varchar(256)
+, "error_backtrace" varchar(4096)
+, "data_rowtime" timestamp
+--, "data_row" varbinary(32768)         -- varbinary not supported by hive
+, "source_position_key" varchar(4096)
+, "pump_db" varchar(128)
+, "pump_schema" varchar(128)
+, "pump_name" varchar(128)
 )
 SERVER HIVE_SERVER
 OPTIONS (

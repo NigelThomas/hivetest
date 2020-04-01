@@ -10,7 +10,7 @@ CREATE SCHEMA sqlstream_trace;
 
 USE sqlstream_trace;
 
-create external table all_trace_sink
+create external table all_trace
 ( hostname varchar(128)
 , error_time timestamp
 , error_level varchar(10)
