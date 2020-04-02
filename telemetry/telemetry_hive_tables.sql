@@ -12,15 +12,18 @@ CREATE SCHEMA sqlstream_telemetry;
 USE sqlstream_telemetry;
 
 !set force on
--- the alter table makes us drop any data as well as the external table
-ALTER TABLE telemetry_server_info SET TBLPROPERTIES('EXTERNAL'='False');
-DROP TABLE telemetry_server_info;
+-- the alter table converts external table to managed table
+-- and so allows us drop any data at the same time as the table
+-- not needed if we create the table as managed in the first place
 
-ALTER TABLE telemetry_stream_graph_info SET TBLPROPERTIES('EXTERNAL'='False');
-DROP TABLE telemetry_stream_graph_info;
+--ALTER TABLE telemetry_server_info SET TBLPROPERTIES('EXTERNAL'='False');
+DROP TABLE IF EXISTS telemetry_server_info;
 
-ALTER TABLE telemetry_stream_operator_info SET TBLPROPERTIES('EXTERNAL'='False');
-DROP TABLE telemetry_stream_operator_info;
+--ALTER TABLE telemetry_stream_graph_info SET TBLPROPERTIES('EXTERNAL'='False');
+DROP TABLE IF EXISTS telemetry_stream_graph_info;
+
+--ALTER TABLE telemetry_stream_operator_info SET TBLPROPERTIES('EXTERNAL'='False');
+DROP TABLE IF EXISTS telemetry_stream_operator_info;
 
 !set force off
 

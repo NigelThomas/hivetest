@@ -51,7 +51,7 @@ OPTIONS (
     "FILENAME_PREFIX" 'server-out-%HOSTNAME%',
     "ORIGINAL_FILENAME" 'pending-server.orc',
 
-    "HDFS_OUTPUT_DIR" '/data/svc_sqlstream_guavus/telemetry/server', 
+    "HDFS_OUTPUT_DIR" '/data/svc_sqlstream_guavus/stage/server', 
 
     "HIVE_SCHEMA_NAME" 'sqlstream_telemetry',
     "HIVE_TABLE_NAME" 'telemetry_server_info',
@@ -116,7 +116,7 @@ OPTIONS (
     "FILENAME_PREFIX" 'streamgraph-out-%HOSTNAME%',
     "ORIGINAL_FILENAME" 'pending-streamgraph.orc',
 
-    "HDFS_OUTPUT_DIR" '/data/svc_sqlstream_guavus/telemetry/streamgraph', 
+    "HDFS_OUTPUT_DIR" '/data/svc_sqlstream_guavus/stage/streamgraph', 
 
     "HIVE_SCHEMA_NAME" 'sqlstream_telemetry',
     "HIVE_TABLE_NAME" 'telemetry_stream_graph_info',
@@ -183,7 +183,7 @@ OPTIONS (
     "FILENAME_PREFIX" 'streamop-out-%HOSTNAME%',
     "ORIGINAL_FILENAME" 'pending-streamop.orc',
 
-    "HDFS_OUTPUT_DIR" '/data/svc_sqlstream_guavus/telemetry/streamop', 
+    "HDFS_OUTPUT_DIR" '/data/svc_sqlstream_guavus/stage/streamop', 
 
     "HIVE_SCHEMA_NAME" 'sqlstream_telemetry',
     "HIVE_TABLE_NAME" 'telemetry_stream_operator_info',
